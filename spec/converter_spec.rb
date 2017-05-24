@@ -151,10 +151,6 @@ RSpec.describe Converter do
       result = subject.to_roman(arabic_nine_hundred)
       expect(result).to eq 'CM'
     end
-
-    context 'invalid input when number repeats more than 3 times' do
-      it 'does not match the invalid input'
-    end
   end
 
   # describe '.to_arabic_alt' do
