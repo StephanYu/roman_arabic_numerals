@@ -5,15 +5,19 @@ expressed as an Arabic or Roman numeral. There should be one line of output for 
 input, containing the original number in the opposite format.
 
 For example, given the following input:
+```
 III
 29
 38
 CCXCI
 1999
+```
 
 The correct output is:
+```
 3
 XXIX
 XXXVIII
 291
 MCMXCIX
+```
