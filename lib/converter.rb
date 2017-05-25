@@ -16,7 +16,7 @@ module Converter
   }.freeze
 
   def self.roman?(line)
-    line.match(/^[CDILMXV]+$/)
+    line.match(/^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/)
   end
 
   def self.arabic?(line)
@@ -32,7 +32,7 @@ module Converter
         arabic += ROMANS[key].to_i
       end
     end
-    arabic
+    arabic.to_s
   end
 
   def self.to_roman(line)
@@ -46,18 +46,4 @@ module Converter
     end
     roman
   end
-
-   # def self.to_roman(line)
-  #   if number is already in ROMANS hash return it else
-  #   break number into thousands, hundreds, tenth, and singles and make note of remainder
-  #   convert each into roman counterpart
-  # end
-  # !!! match.captures => array
-  # def self.to_arabic_alt(line)
-  #   results = line.scan(/^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/)
-  #   binding.pry
-  #   results.flatten.reject { |e| e.to_s.empty? }.map do |roman|
-  #     ROMANS[roman.to_sym] if ROMANS.has_key?(roman.to_sym)
-  #   end.first
-  # end
 end

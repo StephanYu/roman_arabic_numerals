@@ -29,6 +29,14 @@ RSpec.describe Converter do
         expect(result).to be_falsey
       end
     end
+
+    context 'string breaks the rules of more than 3 characters of the same type' do
+      let(:invalid_roman_string) { 'VIIII' }
+      it 'returns false' do
+        result = subject.roman?(invalid_roman_string)
+        expect(result).to be_falsey
+      end
+    end
   end
 
   describe '.arabic?' do
@@ -69,42 +77,42 @@ RSpec.describe Converter do
 
     it 'converts I to 1' do
       result = subject.to_arabic(roman_one)
-      expect(result).to eq 1
+      expect(result).to eq '1'
     end
 
     it 'converts II to 2' do
       result = subject.to_arabic(roman_two)
-      expect(result).to eq 2
+      expect(result).to eq '2'
     end
 
     it 'converts V to 5' do
       result = subject.to_arabic(roman_five)
-      expect(result).to eq 5
+      expect(result).to eq '5'
     end
 
     it 'converts VIII to 8' do
       result = subject.to_arabic(roman_eight)
-      expect(result).to eq 8
+      expect(result).to eq '8'
     end
 
     it 'converts XLIX to 49' do
       result = subject.to_arabic(roman_forty_nine)
-      expect(result).to eq 49
+      expect(result).to eq '49'
     end
 
     it 'converts DLXXIX to 579' do
       result = subject.to_arabic(roman_five_hundred_seventy_nine)
-      expect(result).to eq 579
+      expect(result).to eq '579'
     end
 
     it 'converts CM to 900' do
       result = subject.to_arabic(roman_nine_hundred)
-      expect(result).to eq 900
+      expect(result).to eq '900'
     end
 
     it 'converts a lowercase viii roman number to 8' do
       result = subject.to_arabic(roman_eight_lowercase)
-      expect(result).to eq 8
+      expect(result).to eq '8'
     end
   end
 
@@ -152,55 +160,4 @@ RSpec.describe Converter do
       expect(result).to eq 'CM'
     end
   end
-
-  # describe '.to_arabic_alt' do
-  #   let(:roman_one) { 'I' }
-  #   let(:roman_two) { 'II' }
-  #   let(:roman_five) { 'V' }
-  #   let(:roman_eight) { 'VIII' }
-  #   let(:roman_eight_lowercase) { 'viii' }
-  #   let(:roman_forty_nine) { 'XLIX' }
-  #   let(:roman_five_hundred_seventy_nine) { 'DLXXIX' }
-  #   let(:roman_nine_hundred) { 'CM' }
-
-  #   it 'converts I to 1' do
-  #     result = subject.to_arabic_alt(roman_one)
-  #     expect(result).to eq 1
-  #   end
-
-  #   it 'converts II to 2' do
-  #     result = subject.to_arabic_alt(roman_two)
-  #     expect(result).to eq 2
-  #   end
-
-  #   it 'converts V to 5' do
-  #     result = subject.to_arabic_alt(roman_five)
-  #     expect(result).to eq 5
-  #   end
-
-  #   it 'converts VIII to 8' do
-  #     result = subject.to_arabic_alt(roman_eight)
-  #     expect(result).to eq 8
-  #   end
-
-  #   it 'converts XLIX to 49' do
-  #     result = subject.to_arabic_alt(roman_forty_nine)
-  #     expect(result).to eq 49
-  #   end
-
-  #   it 'converts DLXXIX to 579' do
-  #     result = subject.to_arabic_alt(roman_five_hundred_seventy_nine)
-  #     expect(result).to eq 579
-  #   end
-
-  #   it 'converts CM to 900' do
-  #     result = subject.to_arabic_alt(roman_nine_hundred)
-  #     expect(result).to eq 900
-  #   end
-
-  #   it 'converts a lowercase viii roman number to 8' do
-  #     result = subject.to_arabic_alt(roman_eight_lowercase)
-  #     expect(result).to eq 8
-  #   end
-  # end
 end
