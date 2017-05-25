@@ -108,11 +108,6 @@ RSpec.describe Number do
       result = subject.to_arabic(roman_nine_hundred)
       expect(result).to eq '900'
     end
-
-    it 'converts a lowercase viii roman number to 8' do
-      result = subject.to_arabic(roman_eight_lowercase)
-      expect(result).to eq '8'
-    end
   end
 
   describe '.to_roman' do

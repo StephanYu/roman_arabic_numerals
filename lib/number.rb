@@ -24,7 +24,6 @@ module Number
   end
 
   def self.to_arabic(line)
-    line = line.upcase
     arabic = 0
     ROMANS.keys.each do |key|
       while line.start_with? key.to_s
@@ -41,7 +40,7 @@ module Number
     ROMANS.values.each do |arabic_num|
       while line >= arabic_num.to_i
         line -= arabic_num.to_i
-        roman += ROMANS.key(arabic_num).to_s
+        roman << ROMANS.key(arabic_num).to_s
       end
     end
     roman
