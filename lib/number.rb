@@ -1,4 +1,4 @@
-module Converter
+module Number
   ROMANS = {
     M:  '1000',
     CM: '900',
