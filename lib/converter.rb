@@ -28,7 +28,7 @@ module Converter
     arabic = 0
     ROMANS.keys.each do |key|
       while line.start_with? key.to_s
-        line = line.slice key.length, line.length
+        line = line[key.length..-1]
         arabic += ROMANS[key].to_i
       end
     end
@@ -36,11 +36,23 @@ module Converter
   end
 
   def self.to_roman(line)
-    # if number is already in ROMANS hash return it else 
-    # break number into thousands, hundreds, tenth, and singles and make note of remainder
-    # convert each into roman counterpart
+    line = line.to_i
+    roman = ''
+    ROMANS.values.each do |arabic_num|
+      while line >= arabic_num.to_i
+        line -= arabic_num.to_i
+        roman += ROMANS.key(arabic_num).to_s
+      end
+    end
+    roman
   end
 
+   # def self.to_roman(line)
+  #   if number is already in ROMANS hash return it else
+  #   break number into thousands, hundreds, tenth, and singles and make note of remainder
+  #   convert each into roman counterpart
+  # end
+  # !!! match.captures => array
   # def self.to_arabic_alt(line)
   #   results = line.scan(/^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/)
   #   binding.pry
