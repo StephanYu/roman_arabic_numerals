@@ -1,8 +1,7 @@
 require 'spec_helper'
-require_relative '../lib/converter'
-require 'pry-byebug'
+require_relative '../lib/number'
 
-RSpec.describe Converter do
+RSpec.describe Number do
   subject { described_class }
 
   describe '.roman?' do
