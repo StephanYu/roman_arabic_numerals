@@ -22,7 +22,7 @@ XXXVIII
 MCMXCIX
 ```
 
-###Testing
+### Testing
 
 * Enter rake spec for running automatic specs
 * Run ruby script.rb with the following text files stored under /lib -> arabic.txt, mixed.txt, roman.txt
